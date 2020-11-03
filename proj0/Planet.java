@@ -86,7 +86,14 @@ public class Planet {
           this.yyPos += this.yyVel*dt;
         }
 
-        
+        public void draw () {   /**even a method has no parameter, the '()' is still needed*/
+          /**non-static method*/
+          StdDraw.picture(this.xxPos, this.yyPos, this.imgFileName);
+        }
+
+
+
+
 
 
 
