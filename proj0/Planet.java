@@ -34,6 +34,9 @@ public class Planet {
 
         }
 
+        /**the double must be the [double] instead of [Double] , or the scope grade will fail
+         * though [double] or [Double] both will work;*/
+
         public double calcForceExertedBy (Planet d){
           double G = 6.67e-11;
           double Force;
