@@ -25,7 +25,7 @@ public class Planet {
           imgFileName = b.imgFileName;
         }
 
-        public Double calcDistance (Planet c) { /** the double in method name means the return type */
+        public double calcDistance (Planet c) { /** the double in method name means the return type */
           double Distance;
           double Distance_pow;
           Distance_pow = (c.xxPos - this.xxPos)*(c.xxPos - this.xxPos) + (c.yyPos - this.yyPos)*(c.yyPos - this.yyPos);
@@ -34,26 +34,26 @@ public class Planet {
 
         }
 
-        public Double calcForceExertedBy (Planet d){
+        public double calcForceExertedBy (Planet d){
           double G = 6.67e-11;
           double Force;
           Force = G*(this.mass * d.mass)/(this.calcDistance(d)*this.calcDistance(d));
           return Force;
         }
 
-        public Double calcForceExertedByX (Planet e){
+        public double calcForceExertedByX (Planet e){
           double Force_x;
           Force_x = this.calcForceExertedBy(e)*(e.xxPos-this.xxPos)/this.calcDistance(e);
           return Force_x;
         }
 
-        public Double calcForceExertedByY (Planet f){
+        public double calcForceExertedByY (Planet f){
           double Force_y;
           Force_y = this.calcForceExertedBy(f)*(f.yyPos-this.yyPos)/this.calcDistance(f);
           return Force_y;
         }
 
-        public Double calcNetForceExertedByX (Planet [] m) {
+        public double calcNetForceExertedByX (Planet [] m) {
           double Force_xNet = 0;  /**better to initialize the Force_xNet due to there may be no other planet*/
           for (Planet s: m){
             if (s.equals(this)){
@@ -65,7 +65,7 @@ public class Planet {
           return Force_xNet;
         }
 
-        public Double calcNetForceExertedByY (Planet [] n) {
+        public double calcNetForceExertedByY (Planet [] n) {
           double Force_yNet = 0;
           for (Planet s: n){
             if (s.equals(this)){
