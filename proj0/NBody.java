@@ -66,6 +66,16 @@ public class NBody {
 
     }
 
+
+    /**let the Planet'name go back to original name instead of the images/planet*/
+    for (Planet s: Planet_arr){
+      String name_back = s.imgFileName;
+      s.imgFileName = name_back.substring(7,name_back.length());
+      /***System.out.println(s.imgFileName)*/;
+    }
+
+
+
     StdOut.printf("%d\n", Planet_arr.length);
     StdOut.printf("%.2e\n", radius);
     for (int q = 0; q < Planet_arr.length; q++) {
