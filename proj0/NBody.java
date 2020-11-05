@@ -31,19 +31,20 @@ public class NBody {
     double t = 0;
     double [] xForce = new double [Planet_arr.length];
     double [] yForce = new double [Planet_arr.length];
-    int i = 0;
     int PlanetsLength = Planet_arr.length;
     while (t < T) {
-      while (i < PlanetsLength){
+      for (int i = 0; i < PlanetsLength; i ++){
         xForce[i] = Planet_arr[i].calcNetForceExertedByX(Planet_arr);
         yForce[i] = Planet_arr[i].calcNetForceExertedByY(Planet_arr);
-        i ++;
+        /*** for debug
+        System.out.println(yForce[i]);
+        System.out.println(Planet_arr[i].imgFileName);**/
       }
 
-      int j = 0;    /**用过的i就不让再用了*/
-      while (j < PlanetsLength){
+        /**用过的i就不让再用了*/
+      for(int j = 0; j < PlanetsLength; j ++){
         Planet_arr[j].update(dt, xForce[j], yForce[j]);
-        j ++;   /**不能忘啊，忘了就不动了*/
+          /**j ++; 不能忘啊，忘了就不动了*/
       }
 
       StdDraw.picture(0, 0, background);
@@ -59,8 +60,18 @@ public class NBody {
       StdDraw.show();
       StdDraw.pause(10);
 
-      /**StdDraw.enableDoubleBuffering();
-       *StdDraw.pause(10);*/
+      /***  for debug
+      StdOut.printf("%d\n", Planet_arr.length);
+      StdOut.printf("%.2e\n", radius);
+      for (int q = 0; q < Planet_arr.length; q++) {
+      StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                     Planet_arr[q].xxPos, Planet_arr[q].yyPos, Planet_arr[q].xxVel,
+                     Planet_arr[q].yyVel, Planet_arr[q].mass, Planet_arr[q].imgFileName);
+      }
+        **/
+
+
+
 
       t += dt;
 
