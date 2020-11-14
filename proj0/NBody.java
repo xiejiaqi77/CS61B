@@ -34,6 +34,12 @@ public class NBody {
     int PlanetsLength = Planet_arr.length;
     while (t < T) {
       for (int i = 0; i < PlanetsLength; i ++){
+        /************************POINT: a big bug of MINE *********************
+        /**the int i must be written in the loop and must be initialized every time
+          or, the Force for every planet will not by update every dt*/
+        /**********************************************************************/
+
+
         xForce[i] = Planet_arr[i].calcNetForceExertedByX(Planet_arr);
         yForce[i] = Planet_arr[i].calcNetForceExertedByY(Planet_arr);
         /*** for debug
