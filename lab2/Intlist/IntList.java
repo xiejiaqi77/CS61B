@@ -84,7 +84,7 @@ public class IntList {
         //there must be a ptr to determine the original A
         //need test for null
         if (A == null){
-            return null;
+            return B;
         }
         IntList ptr = A;
 
