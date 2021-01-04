@@ -1,4 +1,4 @@
-public class LinkedListDeque <T>{
+public class LinkedListDeque<T> {
 
   /**<BleepBlorp>*/
   private class IntNode {
