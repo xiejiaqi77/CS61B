@@ -1,7 +1,7 @@
 public class LinkedListDeque <T>{
 
   /**<BleepBlorp>*/
-  public class IntNode {
+  private class IntNode {
 
     /**
      * 之前那个奇奇怪怪T 是我自己写的？？？
@@ -13,7 +13,7 @@ public class LinkedListDeque <T>{
     /***public int item;*/
 
 
-    IntNode(T x, IntNode next, IntNode pre) {
+    private IntNode(T x, IntNode next, IntNode pre) {
 
       item = x;
       Next = next;
@@ -137,7 +137,7 @@ public class LinkedListDeque <T>{
 
   }
 
-  public T getRecursiveHelper(IntNode currNode, int index){
+  private T getRecursiveHelper(IntNode currNode, int index){
     if (index == 0){
       return currNode.item;
     }
