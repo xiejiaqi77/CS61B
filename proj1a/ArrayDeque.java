@@ -133,6 +133,13 @@ public class ArrayDeque<Item> {
     }
 
 
+    public int size() {
+        return size;
+
+
+    }
+
+
     public void addFirst(Item x){
         items[nextFirst] = x;
         nextFirst = oneMinus(nextFirst);
@@ -153,7 +160,7 @@ public class ArrayDeque<Item> {
 
     }
 
-    public Item removeFrist() {
+    public Item removeFirst() {
         if (isEmpty()){
             return null;
         }
@@ -183,6 +190,8 @@ public class ArrayDeque<Item> {
 
         return removed;
     }
+
+
 
 
 
