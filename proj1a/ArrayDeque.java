@@ -87,10 +87,10 @@ public class ArrayDeque<T> {
 
     /**
      * resize the old array to a new array with given capacity
-     *
+     * the resize method must be private
      * */
 
-    public void resize (int newcapacity) {
+    private void resize (int newcapacity) {
         T[] newItems = (T[]) new Object[newcapacity];
 
         int currentFirst = onePlus(nextFirst);
