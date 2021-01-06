@@ -74,7 +74,7 @@ public class ArrayDeque<T> {
         }
     }
 
-    public void printDeuqe() {
+    public void printDeque() {
         int currentIndex = onePlus(nextFirst);
         while (currentIndex != nextLast) {
             System.out.print(items[currentIndex] + " ");
@@ -153,7 +153,7 @@ public class ArrayDeque<T> {
     /**insert x into the back of the list*/
     public void addLast(T x){
         items[nextLast] = x;
-        nextLast = onePlus(nextFirst);
+        nextLast = onePlus(nextLast);
         size += 1;
 
         expand();
