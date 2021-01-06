@@ -7,7 +7,8 @@
  * @ add and remove must take constant time, except during resizing operations.
  * @ get and size must take constant time.
  * @ The starting size of your array should be 8.
- * @  For arrays of length 16 or more, your usage factor should always be at least 25%, For smaller arrays, your usage factor can be arbitrarily low.
+ * @  For arrays of length 16 or more, your usage factor should always be at least 25%,
+ * For smaller arrays, your usage factor can be arbitrarily low.
  *
  *
  *
@@ -23,8 +24,8 @@
     //size: 6;
     //addLast: the items x we want add to the position x;
 
-public class ArrayDeque<Item> {
-    private Item [] items;
+public class ArrayDeque<T> {
+    private T [] items;
     private static int initialCapacity = 8; //the stating length of array
     private static int cFactor = 2; //the factor that being used every time being resizing
     private static double mRatio = 0.25; //the minimun ration before contraction
@@ -42,7 +43,7 @@ public class ArrayDeque<Item> {
     public ArrayDeque() {
         capacity = initialCapacity;
 
-        items = (Item []) new Object [capacity];
+        items = (T []) new Object [capacity];
         nextFirst = capacity - 1;
         nextLast = 0;
         size = 0;
@@ -52,7 +53,7 @@ public class ArrayDeque<Item> {
     public boolean isEmpty() {
         if (size == 0) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -60,7 +61,7 @@ public class ArrayDeque<Item> {
     private int onePlus(int index){
         if (index == capacity - 1){
             return 0;
-        }else{
+        } else {
             return index + 1;
         }
     }
@@ -68,7 +69,7 @@ public class ArrayDeque<Item> {
     private int oneMinus(int index){
         if (index == 0){
             return capacity - 1;
-        }else{
+        } else {
             return index - 1;
         }
     }
@@ -90,7 +91,7 @@ public class ArrayDeque<Item> {
      * */
 
     public void resize (int newcapacity) {
-        Item [] newItems = (Item[]) new Object [newcapacity];
+        T[] newItems = (T[]) new Object[newcapacity];
 
         int currentFirst = onePlus(nextFirst);
         int currentLast = oneMinus(nextLast);
@@ -100,7 +101,7 @@ public class ArrayDeque<Item> {
             System.arraycopy(items, currentFirst, newItems, 0, length);
             nextFirst = newcapacity - 1;
             nextLast = length;
-        }else{
+        } else {
             int lengthFirsts = capacity - currentFirst;
             int newCurrentFirst = newcapacity - lengthFirsts;
             int lengthLasts = nextLast;
@@ -117,7 +118,7 @@ public class ArrayDeque<Item> {
 
     /**check if the item need to be expended: 1) if the size == capacity, if so then execute it */
     private void expand() {
-        if (size == capacity){
+        if (size == capacity) {
             int newcapacity = capacity * eFactor;
             resize(newcapacity);
         }
@@ -125,9 +126,9 @@ public class ArrayDeque<Item> {
 
     /**check if the items needs to be conracted: 1) if the ratioNow < 25%(mRatio), the contract the whole capacity */
     private void contract() {
-        double ratioNow = size/capacity;
-        if (capacity >= mCapacity && ratioNow < mRatio){
-            int newcapacity = capacity/ cFactor;
+        double ratioNow = (double) size/capacity;
+        if (capacity >= mCapacity && ratioNow < mRatio) {
+            int newcapacity = capacity/cFactor;
             resize(newcapacity);
         }
     }
@@ -140,7 +141,7 @@ public class ArrayDeque<Item> {
     }
 
 
-    public void addFirst(Item x){
+    public void addFirst(T x){
         items[nextFirst] = x;
         nextFirst = oneMinus(nextFirst);
         size += 1;
@@ -150,7 +151,7 @@ public class ArrayDeque<Item> {
 
 
     /**insert x into the back of the list*/
-    public void addLast(Item x){
+    public void addLast(T x){
         items[nextLast] = x;
         nextLast = onePlus(nextFirst);
         size += 1;
@@ -160,13 +161,13 @@ public class ArrayDeque<Item> {
 
     }
 
-    public Item removeFirst() {
-        if (isEmpty()){
+    public T removeFirst() {
+        if (isEmpty()) {
             return null;
         }
 
         int currFirst = onePlus(nextFirst);
-        Item removed = items[currFirst];
+        T removed = items[currFirst];
         items[currFirst] = null;
         nextFirst = currFirst;
         size -= 1;
@@ -177,16 +178,18 @@ public class ArrayDeque<Item> {
 
     }
 
-    public Item removeLast() {
+    public T removeLast() {
         if (isEmpty()) {
             return null;
         }
 
         int currentLast = oneMinus(nextLast);
-        Item removed = items[currentLast];
+        T removed = items[currentLast];
         items[currentLast] = null;
         nextLast = currentLast;
         size -= 1;
+
+        contract();
 
         return removed;
     }
@@ -197,17 +200,17 @@ public class ArrayDeque<Item> {
 
 
     // return the item at the index of x;
-    public Item get(int index) {
+    public T get(int index) {
         if (index >= size) {
             return null;
-        } else {
-            int indexFromBegin = nextFirst + index + 1;
-            if (indexFromBegin >= capacity){
-                indexFromBegin -= capacity;
-            }
-            return items[indexFromBegin];
         }
+        int indexFromBegin = nextFirst + index + 1;
+        if (indexFromBegin >= capacity){
+            indexFromBegin -= capacity;
+        }
+        return items[indexFromBegin];
     }
+
 
 
     /****
@@ -222,9 +225,7 @@ public class ArrayDeque<Item> {
      * for the test*/
 
 
-
-
-    }
+}
 
 
 

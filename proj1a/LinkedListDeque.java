@@ -75,7 +75,7 @@ public class LinkedListDeque<T> {
 
   public void printDeque(){
     IntNode p = sentinel;
-    while(p.Next != sentinel){
+    while (p.Next != sentinel) {
       System.out.print(p.Next.item + " ");
       p = p.Next;
     }
@@ -97,7 +97,7 @@ public class LinkedListDeque<T> {
 
     if (sentinel.Pre == sentinel) {
       return null;
-    }else{
+    } else {
       T removed = sentinel.Pre.item;
       sentinel.Pre = sentinel.Pre.Pre;
       sentinel.Pre.Next = sentinel;
@@ -113,7 +113,7 @@ public class LinkedListDeque<T> {
   public T removeFirst(){  /**return removed T*/
     if (sentinel.Pre == sentinel) {
       return null;
-    }else{
+    } else {
       T removed = sentinel.Next.item;
       sentinel.Next = sentinel.Next.Next;
       sentinel.Next.Pre = sentinel;
@@ -126,7 +126,7 @@ public class LinkedListDeque<T> {
 
   public T get(int index){
     IntNode p = sentinel.Next;
-    if (index >= size){
+    if (index >= size) {
       return null;
     }
     while (index > 0) {
@@ -138,14 +138,14 @@ public class LinkedListDeque<T> {
   }
 
   private T getRecursiveHelper(IntNode currNode, int index){
-    if (index == 0){
+    if (index == 0) {
       return currNode.item;
     }
     return getRecursiveHelper(currNode.Next, index-1);
   }
 
   public T getRecursive(int index){
-    if (index >= size){
+    if (index >= size) {
       return null;
 
     }
